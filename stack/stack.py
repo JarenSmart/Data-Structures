@@ -12,7 +12,7 @@ return elements in Last In First Out order.
 """
 from singly_linked_list import LinkedList
 
-# First class without LinkedList
+# First class without LinkedList()
 # class Stack:
 #     def __init__(self):
 #         self.size = []
