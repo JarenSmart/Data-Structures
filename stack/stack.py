@@ -29,19 +29,26 @@ from singly_linked_list import LinkedList
 #             return None
 #         return self.size.pop()
 
+# Second class using LinkedList()
+
 
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.storage = LinkedList()
 
     def __len__(self):
-        return len(self.size)
+        return self.size
 
     def push(self, value):
-        self.size.append(value)
+        self.storage.add_to_tail(value)
+        self.size += 1
 
     def pop(self):
-        if len(self.size) < 1:
+        if self.size == 0:
             return None
-        return self.size.pop()
+        else:
+            jank = self.storage.tail.value
+            self.storage.remove_tail()
+            self.size -= 1
+            return jank
