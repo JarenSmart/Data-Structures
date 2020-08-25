@@ -9,22 +9,71 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
-        self.left = None
-        self.right = None
+        self.left: BSTNode = None
+        self.right: BSTNode = None
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # if single element
+        # compare target value to node.value
+        # if value > node.value
+        if value > self.value:
+            # Go right
+            # if node.right is None:
+            if self.right is None:
+                # Create the new node there
+                self.right = BSTNode(value)
+            else:  # self.right is a BSTNode
+                # Do the same thing
+                # Insert value into node.right
+                right_child = self.right
+                right_child.insert(value)
+        #           - Compare value value to node value
+        #               - If value > node.value : go right
+        #               - If value < node.value : go left
+        if value < self.value:
+            # else if value < node.value
+            # Go left
+            # if node.left is None:
+            if self.left is None:
+                # Create the new node there
+                self.left = BSTNode(value)
+            else:
+                left_child = self.left
+                left_child.insert(value)
+        #       - Compare value value to node value
+        #               - If value > node.value : go right
+        #               - If value < node.value : go left
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # Contains:
+        # Compare target value to node.value
+        # if target == node.value:
+        # return True
+        # if target > node.value:
+        # Go right
+        # If node.right is None:
+        # We've traversed the tree and haven't found it
+        # return False
+        # Else
+        # Do same as above
+        # Check and return node.right.contains(target)
+        # Else if target < node.value
+        # Go left
+        # if node.left is None:
+        # return False
+        # Else
+        # Do same as above (compare, go left, or go right)
+        # return node.left.contains(target)
 
-    # Return the maximum value found in the tree
+        # Return the maximum value found in the tree
     def get_max(self):
         pass
 
@@ -60,6 +109,7 @@ class BSTNode:
     def post_order_dft(self):
         pass
 
+
 """
 This code is necessary for testing the `print` methods
 """
@@ -82,4 +132,4 @@ bst.pre_order_dft()
 print("in order")
 bst.in_order_dft()
 print("post order")
-bst.post_order_dft()  
+bst.post_order_dft()

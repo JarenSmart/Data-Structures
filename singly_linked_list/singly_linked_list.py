@@ -14,7 +14,7 @@ class LinkedList:
 
     # append / add --> add_to_tail
     def add_to_tail(self, value):
-        if not self.tail:
+        if not self.tail and not self.head:
             new_tail = Node(value, None)
             self.head = new_tail
             self.tail = new_tail
@@ -62,13 +62,49 @@ class LinkedList:
         self.tail = current
         return value
 
-        # Start at head and iterate to the next-to-last node
-        # Stop when current_node.next == self.tail
-        # Save the current_tail value
-        # Set self.tail to current_node
-        # Set current_node.next to None
-        #
-        # List of 1 element:
-        # Save the current_tail.value
-        # Set self.tail to None
-        # Set self.head to None
+    def add_to_head(self, value):
+        # Is there a head?
+        # if no head / empty list:
+        if self.head is None:
+            # create the new node with next = None
+            new_node = Node(value, None)
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
+        else:
+            # if head exists:
+            # create the new node
+            # new_node.next = self.head
+            new_node = Node(value, self.head)
+            # set self.head = new_node
+            self.head = new_node
+            # increment self.length
+            self.length += 1
+
+        # if no head / empty list:
+            # create the new node
+            # set one with next = None
+            # set self.head = new node
+            # set self.tail = new node
+
+    def remove_at_index(self, index):
+        # Remove at index i:
+        # 0) Check that length > i. If not, return None
+        if index >= self.length:
+            return None
+        if self.length == 1 and index == 0:
+            target = self.head
+            self.head = None
+            self.tail = None
+            self.length = self.length - 1
+            return target.value
+        # Iterate through the loop i-1 times:
+        prev_node = self.head
+        for i in range(index - 1):
+            # This will get us to prev_node points to the node before the target node
+            prev_node = prev_node.next
+        target = prev_node.next
+        prev_node.next = target.next
+        target.next = None
+        self.length = self.length - 1
+        return target.value
