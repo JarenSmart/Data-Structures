@@ -19,36 +19,47 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        # if single element
-        # compare target value to node.value
-        # if value > node.value
-        if value > self.value:
-            # Go right
-            # if node.right is None:
-            if self.right is None:
-                # Create the new node there
-                self.right = BSTNode(value)
-            else:  # self.right is a BSTNode
-                # Do the same thing
-                # Insert value into node.right
-                right_child = self.right
-                right_child.insert(value)
-        #           - Compare value value to node value
-        #               - If value > node.value : go right
-        #               - If value < node.value : go left
         if value < self.value:
-            # else if value < node.value
-            # Go left
-            # if node.left is None:
-            if self.left is None:
-                # Create the new node there
+            if not self.left:
                 self.left = BSTNode(value)
             else:
-                left_child = self.left
-                left_child.insert(value)
-        #       - Compare value value to node value
-        #               - If value > node.value : go right
-        #               - If value < node.value : go left
+                self.left.insert(value)
+        else:
+            value >= self.value
+            if not self.right:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
+        # # if single element
+        # # compare target value to node.value
+        # # if value > node.value
+        # if value > self.value:
+        #     # Go right
+        #     # if node.right is None:
+        #     if self.right is None:
+        #         # Create the new node there
+        #         self.right = BSTNode(value)
+        #     else:  # self.right is a BSTNode
+        #         # Do the same thing
+        #         # Insert value into node.right
+        #         right_child = self.right
+        #         right_child.insert(value)
+        # #           - Compare value value to node value
+        # #               - If value > node.value : go right
+        # #               - If value < node.value : go left
+        # if value < self.value:
+        #     # else if value < node.value
+        #     # Go left
+        #     # if node.left is None:
+        #     if self.left is None:
+        #         # Create the new node there
+        #         self.left = BSTNode(value)
+        #     else:
+        #         left_child = self.left
+        #         left_child.insert(value)
+        # #       - Compare value value to node value
+        # #               - If value > node.value : go right
+        # #               - If value < node.value : go left
 
     # Return True if the tree contains the value
     # False if it does not
